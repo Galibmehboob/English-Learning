@@ -144,10 +144,19 @@ const displayLevelWord = (words) => {
             </div>
             <div class="flex justify-around items-center pt-10">
                 <button onclick="loadWordDetail(${word.id})" class="btn btn-square bg-blue-50 bg-opacity-10 hover:bg-blue-700 hover:text-white"><i class="fa-solid fa-circle-info"></i></button>
-                <button class="btn btn-square bg-blue-50 bg-opacity-10 hover:bg-blue-700 hover:text-white"><i class="fa-solid fa-ear-listen"></i></button>
+
+                 <button class="btn btn-square speak-btn bg-blue-50 bg-opacity-10 hover:bg-blue-700 hover:text-white">
+                <i class="fa-solid fa-ear-listen"></i>
+                </button>
             </div>
         </div>
         `;
+        // and up there have to change the speak button 
+        // SPEAK BUTTON  change here to speek********Event Listener Add
+        cards.querySelector(".speak-btn")
+            .addEventListener("click", () => {
+                speakWord(word.word);
+            });
         wordContainer.append(cards)
     })
     loadingSpin(false)
@@ -165,8 +174,7 @@ const defaultPage = () => {
 }
 
 
-allBtn()
-defaultPage()
+
 
 document.getElementById('btn-search').addEventListener("click", () => {
     const input = document.getElementById('input-search');
@@ -189,4 +197,22 @@ document.getElementById('copyRightDate').innerText =
     `© ${new Date().getFullYear()} Your Company. All rights reserved.`;
 
 
+//  SPEAK FUNCTION 
+function speakWord(word) {
+
+    if (!word) return;
+
+    window.speechSynthesis.cancel()
+
+    const utterance = new SpeechSynthesisUtterance(word)
+
+    utterance.lang = "en-US"
+    utterance.rate = 0.9
+    utterance.pitch = 1
+
+    window.speechSynthesis.speak(utterance)
+}
+
+allBtn()
+defaultPage()
 
