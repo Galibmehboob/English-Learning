@@ -12,7 +12,7 @@ The project is still under development, and more features will be added in the f
 
 ## 🔗 Live Demo
 
-👉 https://lnkd.in/gRfqYUwS
+👉  <a href="https://vocal-phoenix-a79cb5.netlify.app">English Window</a> <br/>
 
 ---
 
